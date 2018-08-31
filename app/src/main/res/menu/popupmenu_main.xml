@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/popup_menu_loadList"
+        android:title="@string/popup_load_list"/>
+    <item
+        android:id="@+id/popup_menu_modifyList"
+        android:title="@string/popup_modify_list"/>
+    <item
+        android:id="@+id/popup_menu_deleteList"
+        android:title="@string/popup_delete_list"/>
+
+</menu>

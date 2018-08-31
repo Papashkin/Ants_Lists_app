@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="Azure">#F0FFFF</color>
+    <color name="Black">#000000</color>
+    <color name="White">#ffffff</color>
+    <color name="Cyan">#00ffff</color>
+    <color name="SkyBlue">#87CEEB</color>
+    <color name="Gainsboro">#DCDCDC</color>
+    <color name="Silver">#c0c0c0</color>
+</resources>

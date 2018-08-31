@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/SkyBlue"
+        android:stretchColumns="0">
+
+        <TableRow tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/newlist_listName"
+                android:textSize="34sp"
+                android:textColor="@color/White"
+                android:background="@color/SkyBlue"
+                android:textAlignment="center"
+                android:layout_column="0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:background="@color/SkyBlue"/>
+
+            <ImageButton
+                android:src ="@drawable/save_32"
+                android:onClick="saveList"
+                android:background="@color/SkyBlue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:visibility="invisible"
+                android:id="@+id/btn_save_setlist"/>
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:background="@color/SkyBlue"/>
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/SkyBlue"
+                android:src="@drawable/share_32"
+                android:onClick="sentToWeb"
+                android:layout_column="2"/>
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:background="@color/SkyBlue"/>
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/SkyBlue"
+                android:src="@drawable/logout_32"
+                android:onClick="getBack"
+                android:layout_column="3"/>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/SkyBlue"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:stretchColumns="0">
+
+        <TableRow tools:ignore="UselessParent">
+
+            <EditText
+                android:id="@+id/newlist_text_newitem"
+                android:hint="@string/insert_items_name"
+                android:textSize="28sp"
+                android:layout_column="0"
+                android:textColor="@color/Black"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:layout_column="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/add_48"
+                android:onClick="addItem"
+                android:background="@color/White"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <ListView
+        android:id="@+id/newlist_itemsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White">
+
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">"Ant\'s Lists</string>
+    <string name="main_title">Existing lists:</string>
+    <string name="tv_newlist">%s</string>
+    <string name="Ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="item">New list creation</string>
+    <string name="insert_items_name">insert item\'s name</string>
+    <string name="need_item_name">Please write the list name</string>
+    <string name="popup_load_list">Use it!</string>
+    <string name="popup_modify_list">Modify it!</string>
+    <string name="popup_delete_list">Delete it!</string>
+    <string name="overwrite_list">Do you want to overwrite the list?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="new_list_name">Name of new list:</string>
+    <string name="dialog_delete_list">Do you really want do delete this list?</string>
+    <string name="dialog_update_question">Current list is different from saved earlier.\n
+        Do you want to accept the changes?</string>
+
+    <!-- text references of the newList activity -->
+    <string name="list_write_success">List was written successfully</string>
+    <string name="already_in_list">This item is already in the list</string>
+
+    <!-- text references of the Main activity -->
+    <string name="load_to_use">list \'%s\' is loaded to modify"</string>
+    <string name="load_to_modify">list \'%s\' is loading"</string>
+    <string name="delete_list">list \'%s\' deleted"</string>
+
+</resources>
