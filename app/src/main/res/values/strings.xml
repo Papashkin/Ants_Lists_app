@@ -5,9 +5,10 @@
     <string name="Ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="item">New list creation</string>
-    <string name="insert_items_name">insert list name</string>
+    <string name="insert_item_name">item\'s name</string>
+    <string name="insert_list_name">list name</string>
     <string name="need_item_name">Please write the list name</string>
-    <string name="popup_load_list">Use it!</string>
+    <string name="popup_load_list">Load it!</string>
     <string name="popup_modify_list">Modify it!</string>
     <string name="popup_delete_list">Delete it!</string>
     <string name="overwrite_list">Do you want to overwrite the list?</string>
@@ -23,8 +24,8 @@
     <string name="already_in_list">This item is already in the list</string>
 
     <!-- text references of the Main activity -->
-    <string name="load_to_use">list \'%s\' is loaded to modify"</string>
-    <string name="load_to_modify">list \'%s\' is loading"</string>
+    <string name="load_to_use">list \'%s\' is loaded"</string>
+    <string name="load_to_modify">list \'%s\' is loaded to modify"</string>
     <string name="delete_list">list \'%s\' deleted"</string>
 
 </resources>

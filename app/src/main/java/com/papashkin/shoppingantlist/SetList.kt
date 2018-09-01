@@ -129,6 +129,7 @@ class SetList: Activity() {
         } else {
             saveFile()
         }
+        savedItems.clear()
         itemsList.forEach{ savedItems.add(it) }
     }
 

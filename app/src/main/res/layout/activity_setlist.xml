@@ -84,7 +84,7 @@
 
             <EditText
                 android:id="@+id/newlist_text_newitem"
-                android:hint="@string/insert_items_name"
+                android:hint="@string/insert_item_name"
                 android:textSize="28sp"
                 android:layout_column="0"
                 android:textColor="@color/Black"

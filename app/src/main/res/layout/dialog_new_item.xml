@@ -12,7 +12,7 @@
 
     <EditText
         android:id="@+id/text_item_name"
-        android:hint="@string/insert_items_name"
+        android:hint="@string/insert_list_name"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
