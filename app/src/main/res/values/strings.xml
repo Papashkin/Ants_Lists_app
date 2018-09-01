@@ -5,7 +5,7 @@
     <string name="Ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="item">New list creation</string>
-    <string name="insert_items_name">insert item\'s name</string>
+    <string name="insert_items_name">insert list name</string>
     <string name="need_item_name">Please write the list name</string>
     <string name="popup_load_list">Use it!</string>
     <string name="popup_modify_list">Modify it!</string>
@@ -15,7 +15,7 @@
     <string name="yes">Yes</string>
     <string name="new_list_name">Name of new list:</string>
     <string name="dialog_delete_list">Do you really want do delete this list?</string>
-    <string name="dialog_update_question">Current list is different from saved earlier.\n
+    <string name="dialog_update_question">Current list is different than saved earlier.\n
         Do you want to accept the changes?</string>
 
     <!-- text references of the newList activity -->

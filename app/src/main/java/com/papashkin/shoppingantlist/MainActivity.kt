@@ -17,8 +17,11 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     private val LIST_MODIFY = 1
 
-    lateinit var MSG_NEED_ITEM_NAME: String
-    lateinit var MSG_TITLE: String
+    private lateinit var MSG_NEED_ITEM_NAME: String
+    private lateinit var MSG_TITLE: String
+    private lateinit var btn_OK: Button
+    private lateinit var btn_Cancel: Button
+
     lateinit var MSG_LOAD2USE: String
     lateinit var MSG_LOAD2MODIFY: String
     lateinit var MSG_DELETE: String
@@ -26,8 +29,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var mAdapter: ArrayAdapter<String>
     lateinit var mList: ListView
     lateinit var inputText: EditText
-    lateinit var btn_OK: Button
-    lateinit var btn_Cancel: Button
     lateinit var appFilesDir: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showPopupMenu(view: View, fileName: String){
         val popupMenu = PopupMenu(this, view)
-        view.setBackgroundColor(Color.CYAN)
+        view.setBackgroundColor(Color.LTGRAY)
         popupMenu.inflate(R.menu.popupmenu_main)
         val file = "$fileName.txt"
 

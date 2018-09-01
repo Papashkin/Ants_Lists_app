@@ -1,5 +1,6 @@
 package com.papashkin.shoppingantlist
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -11,36 +12,52 @@ import android.widget.*
 import java.io.File
 import java.util.*
 import android.widget.Toast
+import kotlin.collections.ArrayList
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SetList: Activity() {
-    lateinit var MSG_ITEM_ALREADY_IN_LIST: String
-    lateinit var MSG_WRITE_SUCCESS: String
+    private lateinit var MSG_ITEM_ALREADY_IN_LIST: String
+    private lateinit var MSG_WRITE_SUCCESS: String
+    private lateinit var savedItems: LinkedHashSet<String>
+    private lateinit var itemsFromFile: ArrayList<String>
+    private lateinit var touchListener: SwipeDismissListViewTouchListener
+    private lateinit var itemsList: LinkedList<String>
+    private lateinit var list_view: ListView
+    private lateinit var listName: TextView
+    private lateinit var text_newItem: EditText
+
     lateinit var mAdapter:ArrayAdapter<String>
-    lateinit var itemsList: LinkedList<String>
-    lateinit var list_view: ListView
-    lateinit var listName: TextView
-    lateinit var text_newItem: EditText
     lateinit var saveBtn: ImageButton
     lateinit var name: String
-    lateinit var touchListener: SwipeDismissListViewTouchListener
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setlist)
 
         MSG_ITEM_ALREADY_IN_LIST = resources.getString(R.string.already_in_list)
         MSG_WRITE_SUCCESS = resources.getString(R.string.list_write_success)
+        saveBtn = this.findViewById(R.id.btn_save_setlist)
 
         name = intent.getStringExtra("LIST_NAME")
         itemsList = LinkedList()
-        val test = intent.getStringArrayListExtra("LIST")
-        if (test.isNotEmpty()) {
-            test.forEach {
-                itemsList.add(it)
+        savedItems = linkedSetOf()
+
+        if (savedInstanceState != null){
+            val items = savedInstanceState.getStringArrayList("all_items")
+            items.forEach { itemsList.add(it) }
+            saveBtn.visibility = savedInstanceState.getInt("visibility")
+        } else {
+            itemsFromFile = intent.getStringArrayListExtra("LIST")
+            if (itemsFromFile.isNotEmpty()) {
+                itemsFromFile.forEach {
+                    itemsList.add(it)
+                    savedItems.add(it)
+                }
+                itemsFromFile.clear()
             }
         }
 
-        saveBtn = this.findViewById(R.id.btn_save_setlist)
         list_view = this.findViewById(R.id.newlist_itemsList)
         listName = this.findViewById(R.id.newlist_listName)
         listName.text = name
@@ -79,6 +96,14 @@ class SetList: Activity() {
         list_view.adapter = mAdapter
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        val allItems = arrayListOf<String>()
+        itemsList.forEach { allItems.add(it) }
+        outState!!.putStringArrayList("all_items", allItems)
+        outState.putInt("visibility", saveBtn.visibility)
+    }
+
     fun addItem(v: View) {
         val str: String
         if (text_newItem.text.isNotEmpty()){
@@ -104,17 +129,12 @@ class SetList: Activity() {
         } else {
             saveFile()
         }
+        itemsList.forEach{ savedItems.add(it) }
     }
 
     fun getBack(v: View){
         val listFromFile = arrayListOf<String>()
-        val file = File(filesDir,"$name.txt")
-        if (file.isFile){
-            file.useLines { lines -> lines.forEach{
-                if (it != "") listFromFile.add(it)
-            }
-            }
-        }
+        savedItems.forEach { listFromFile.add(it) }
         val areEquals = (listFromFile.containsAll(itemsList)) &&
                 (itemsList.containsAll(listFromFile))
         if (!areEquals){
@@ -139,7 +159,7 @@ class SetList: Activity() {
     }
 
     fun sentToWeb(v:View){
-        var message = "to-do list \"${listName.text.toString()}\":\n"
+        var message = "to-do list \"${listName.text}\":\n"
         for (i in itemsList.indices){
             message += ("$i. ${itemsList[i]};\n")
         }

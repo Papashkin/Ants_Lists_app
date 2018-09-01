@@ -1,5 +1,6 @@
 package com.papashkin.shoppingantlist
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.ListView
 import android.widget.TextView
 import kotlin.collections.ArrayList
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class UseList: Activity() {
     lateinit var tv_listName: TextView
     lateinit var lv_neededItems: ListView
@@ -21,14 +23,20 @@ class UseList: Activity() {
     lateinit var neededtouchListener: SwipeDismissListViewTouchListener
     lateinit var checkedtouchListener: SwipeDismissListViewTouchListener
 
-
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uselist)
 
         fileName = intent.getStringExtra("LIST_NAME")
-        list_neededItems = intent.getStringArrayListExtra("LIST")
-        list_chekedItems = arrayListOf()
+
+        if (savedInstanceState != null){
+            list_neededItems = savedInstanceState.getStringArrayList("needed_items")
+            list_chekedItems = savedInstanceState.getStringArrayList("checked_items")
+        } else {
+            list_neededItems = intent.getStringArrayListExtra("LIST")
+            list_chekedItems = arrayListOf()
+        }
 
         tv_listName = this.findViewById(R.id.uselist_listname)
         tv_listName.text = fileName
@@ -75,6 +83,13 @@ class UseList: Activity() {
                 list_chekedItems)
         lv_checkedItems.adapter = checkedAdapter
     }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState!!.putStringArrayList("needed_items", list_neededItems)
+        outState.putStringArrayList("checked_items", list_chekedItems)
+    }
+
 
     fun returnToMain(v: View){
         val intent = Intent(this@UseList, MainActivity::class.java)
