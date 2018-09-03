@@ -12,7 +12,7 @@
     <string name="list_write_success">Список сохранен</string>
     <string name="load_to_modify">Список \'%s\' загружен</string>
     <string name="load_to_use">Список \'%s\' загружен</string>
-    <string name="main_title">Существующие списки:</string>
+    <string name="main_title">Ваши списки:</string>
     <string name="need_item_name">Пожалуйста, ведите название</string>
     <string name="new_list_name">Название нового списка:</string>
     <string name="no">Нет</string>

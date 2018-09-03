@@ -27,5 +27,6 @@
     <string name="load_to_use">list \'%s\' is loaded"</string>
     <string name="load_to_modify">list \'%s\' is loaded to modify"</string>
     <string name="delete_list">list \'%s\' deleted"</string>
+    <string name="widget_existed_lists">Existed lists:</string>
 
 </resources>

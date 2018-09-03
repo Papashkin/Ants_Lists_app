@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import java.io.File
 import kotlin.collections.ArrayList
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -28,11 +29,30 @@ class UseList: Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uselist)
 
-        fileName = intent.getStringExtra("LIST_NAME")
+        val newIntent = Intent()
+        val extras = newIntent.extras
+        if (extras != null) {
+//            widgetID = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID,
+//                    AppWidgetManager.INVALID_APPWIDGET_ID);
+        }
 
-        if (savedInstanceState != null){
-            list_neededItems = savedInstanceState.getStringArrayList("needed_items")
-            list_chekedItems = savedInstanceState.getStringArrayList("checked_items")
+        if (savedInstanceState != null) {
+            val isFromWidget = savedInstanceState.getBoolean("FROM_WIDGET",
+                    false)
+            if (isFromWidget) {
+                val file = File(this.filesDir, fileName)
+                file.useLines { lines ->
+                    lines.forEach {
+                        if (it != "") list_neededItems.add(it)
+                    }
+                }
+                list_chekedItems = arrayListOf()
+                fileName = savedInstanceState.getString("LIST_NAME")
+            } else {
+                fileName = intent.getStringExtra("LIST_NAME")
+                list_neededItems = savedInstanceState.getStringArrayList("needed_items")
+                list_chekedItems = savedInstanceState.getStringArrayList("checked_items")
+            }
         } else {
             list_neededItems = intent.getStringArrayListExtra("LIST")
             list_chekedItems = arrayListOf()
