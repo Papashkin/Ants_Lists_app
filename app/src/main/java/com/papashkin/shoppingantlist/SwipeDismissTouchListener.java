@@ -3,8 +3,8 @@ package com.papashkin.shoppingantlist;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
-import android.app.ListFragment;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -20,8 +20,8 @@ import android.widget.ListView;
  * <p><em>For {@link ListView} list items that don't manage their own touch events
  * (i.e. you're using
  * {@link ListView#setOnItemClickListener(AdapterView.OnItemClickListener)}
- * or an equivalent listener on {@link ListActivity} or
- * {@link ListFragment}, use {@link SwipeDismissListViewTouchListener} instead.</em></p>
+ * or an equivalent listener on {@link ListActivity}, use
+ * {@link SwipeDismissListViewTouchListener} instead.</em></p>
  *
  * <p>Example usage:</p>
  *
@@ -101,6 +101,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
         mCallbacks = callbacks;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         // offset because the view is translated during swipe

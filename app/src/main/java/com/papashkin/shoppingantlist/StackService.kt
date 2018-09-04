@@ -20,17 +20,15 @@ class StackService: RemoteViewsService() {
         private var listNames: ArrayList<String>
 
         init {
-            val filesPath = (mContext.applicationInfo.dataDir) + "/files/"
-            files = File(filesPath).listFiles()
+            files = arrayOf()
+            listNames = arrayListOf()
+            checkFiles(mContext)
             mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID)
-            listNames = arrayListOf()
-            files.forEach {
-                listNames.add(it.nameWithoutExtension)
-            }
         }
 
         override fun onCreate() {
+            checkFiles(mContext)
             try {
                 Thread.sleep(2000)
             } catch (e: InterruptedException) {
@@ -39,6 +37,7 @@ class StackService: RemoteViewsService() {
         }
 
         override fun getLoadingView(): RemoteViews? {
+            checkFiles(mContext)
             return null
         }
 
@@ -47,6 +46,10 @@ class StackService: RemoteViewsService() {
         }
 
         override fun onDataSetChanged() {
+            checkFiles(mContext)
+            for (i in listNames.indices){
+                getViewAt(i)
+            }
         }
 
         override fun hasStableIds(): Boolean {
@@ -59,13 +62,12 @@ class StackService: RemoteViewsService() {
 
             val extras = Bundle()
             extras.putInt(AntsWidget.EXTRA_ITEM, position)
-            extras.putString("LIST_NAME", listNames[position])
 
             val fillInIntent = Intent()
             fillInIntent.putExtras(extras)
             rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent)
             try {
-                System.out.println("Loading view $position")
+                System.out.println("Loading view $position: list ${listNames[position]}")
                 Thread.sleep(500)
             } catch (e: InterruptedException) {
                 e.printStackTrace()
@@ -85,5 +87,13 @@ class StackService: RemoteViewsService() {
             listNames.clear()
         }
 
+        private fun checkFiles(context: Context){
+            val filesPath = (context.applicationInfo.dataDir) + "/files/"
+            val files = File(filesPath).listFiles()
+            listNames = arrayListOf()
+            files.forEach {
+                listNames.add(it.nameWithoutExtension)
+            }
+        }
     }
 }

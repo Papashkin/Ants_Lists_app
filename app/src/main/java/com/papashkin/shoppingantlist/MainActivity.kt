@@ -1,6 +1,10 @@
 package com.papashkin.shoppingantlist
 
 import android.app.Dialog
+import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -45,8 +49,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onResume(){
-        super.onResume()
+        updateWidget(applicationContext)
         checkFilesList()
+        super.onResume()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -161,6 +166,7 @@ class MainActivity : AppCompatActivity() {
             deleteFile("$fileName.txt")
             listsNames.remove(fileName)
             mList.adapter = mAdapter
+            updateWidget(this@MainActivity)
             Toast.makeText(applicationContext, MSG_DELETE,
                     Toast.LENGTH_SHORT).show()
         }
@@ -202,5 +208,8 @@ class MainActivity : AppCompatActivity() {
         }
         mAdapter = ArrayAdapter(this, R.layout.textview_list, listsNames)
         mList.adapter = mAdapter
+    }
+    private fun updateWidget(context: Context){
+        AntsWidget().sendRefreshBroadcast(context)
     }
 }

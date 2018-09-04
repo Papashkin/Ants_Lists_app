@@ -23,4 +23,6 @@
     <string name="popup_modify_list">Изменить</string>
     <string name="tv_newlist">%s</string>
     <string name="yes">Да</string>
+    <string name="widget_upd">"Проверяем списки …"</string>
+    <string name="widget_existed_lists">Cписки:</string>
 </resources>

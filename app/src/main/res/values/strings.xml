@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">"Ant\'s Lists</string>
-    <string name="main_title">Existing lists:</string>
+    <string name="main_title">Your lists:</string>
     <string name="tv_newlist">%s</string>
     <string name="Ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -18,6 +18,7 @@
     <string name="dialog_delete_list">Do you really want do delete this list?</string>
     <string name="dialog_update_question">Current list is different than saved earlier.\n
         Do you want to accept the changes?</string>
+    <string name="widget_upd">"check lists …"</string>
 
     <!-- text references of the newList activity -->
     <string name="list_write_success">List was written successfully</string>

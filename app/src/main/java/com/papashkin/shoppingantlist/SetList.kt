@@ -60,6 +60,7 @@ class SetList: Activity() {
 
         list_view = this.findViewById(R.id.newlist_itemsList)
         listName = this.findViewById(R.id.newlist_listName)
+        listName.isHorizontalFadingEdgeEnabled = true
         listName.text = name
 
         text_newItem = findViewById(R.id.newlist_text_newitem)
@@ -128,6 +129,7 @@ class SetList: Activity() {
             overwriteFile()
         } else {
             saveFile()
+            AntsWidget().sendRefreshBroadcast(this@SetList)
         }
         savedItems.clear()
         itemsList.forEach{ savedItems.add(it) }

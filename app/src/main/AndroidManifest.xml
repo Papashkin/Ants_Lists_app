@@ -33,6 +33,11 @@
                     android:name="android.appwidget.action.APPWIDGET_UPDATE">
                 </action>
             </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.appwidget.action.ACTION_APPWIDGET_BIND">
+                </action>
+            </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/antlist_widgetprovider">

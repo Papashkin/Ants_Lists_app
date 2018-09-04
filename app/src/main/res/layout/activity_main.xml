@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ants_bkgnd"
+    android:background="@color/Silver"
     tools:context="com.papashkin.shoppingantlist.MainActivity">
 
     <ListView
         android:id="@+id/layout_lists"
         android:layout_width="match_parent"
         android:background="@color/Silver"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:ellipsize="end" >
     </ListView>
 
 </android.support.constraint.ConstraintLayout>

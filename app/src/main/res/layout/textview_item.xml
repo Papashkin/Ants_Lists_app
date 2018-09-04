@@ -6,7 +6,10 @@
     android:textColor="@color/Black"
     android:background="@color/Silver"
     android:layout_margin="10dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="0dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
-
-</TextView>
+    android:layout_height="wrap_content"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:singleLine="true" />

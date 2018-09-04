@@ -4,21 +4,52 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Azure">
+    android:background="@drawable/rounded_corners_widget">
 
-    <TextView
-        android:text="@string/main_title"
-        android:background="@color/SkyBlue"
-        android:textColor="@color/Black"
-        android:textSize="20sp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_corners_textview_widget">
+
+        <ImageButton
+            android:id="@+id/button_refresh"
+            android:src="@drawable/refresh_20"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corners_textview_widget"
+            android:paddingLeft="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <TextView
+            android:id="@+id/text_yourlists"
+            android:text="@string/main_title"
+            android:textColor="@color/Black"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:padding="4dp"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/widget_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_gravity="center_vertical" />
+        android:background="@color/Azure"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="12dp"
+        android:paddingBottom="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
+
+
+
 
 </LinearLayout>

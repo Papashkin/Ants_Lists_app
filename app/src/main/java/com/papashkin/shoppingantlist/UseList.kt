@@ -29,13 +29,6 @@ class UseList: Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uselist)
 
-        val newIntent = Intent()
-        val extras = newIntent.extras
-        if (extras != null) {
-//            widgetID = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID,
-//                    AppWidgetManager.INVALID_APPWIDGET_ID);
-        }
-
         if (savedInstanceState != null) {
             val isFromWidget = savedInstanceState.getBoolean("FROM_WIDGET",
                     false)
@@ -54,6 +47,7 @@ class UseList: Activity() {
                 list_chekedItems = savedInstanceState.getStringArrayList("checked_items")
             }
         } else {
+            fileName = intent.getStringExtra("LIST_NAME")
             list_neededItems = intent.getStringArrayListExtra("LIST")
             list_chekedItems = arrayListOf()
         }
